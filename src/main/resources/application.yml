@@ -1,0 +1,15 @@
+spring:
+    application:
+        name: app-green-shop
+    datasource:
+        driverClassName: org.postgresql.Driver
+        password: 95
+        url: jdbc:postgresql://localhost:5432/postgres
+        username: postgres
+    jpa:
+        hibernate:
+            ddl-auto: create
+        properties:
+            hibernate:
+                format_sql: true
+        show-sql: true
