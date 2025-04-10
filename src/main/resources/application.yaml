@@ -1,0 +1,35 @@
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  application:
+    name: card-process
+  datasource:
+    driverClassName: com.p6spy.engine.spy.P6SpyDriver
+    url: jdbc:p6spy:h2:mem:greenshop
+    username: sa
+    password: 0095
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    h2:
+      console:
+        enabled: true
+        path: /h2-console
+
+sentry:
+  dsn: https://809f46fddddb00ebd21ad7b4d24b1a26@o4508398301872128.ingest.de.sentry.io/4508408443240528
+  environment: "development"
+  traces-sample-rate: 1.0    # 1.0 - barcha requestlarni kuzatadi
+  debug: false                # Debug rejimini yoqing (faqat test uchun)
+
+server:
+  port: 8085
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui
+    groups-order: asc
+    operations-sorter: alpha
+    try-it-out-enabled: true
+    tags-sorter: alpha
+    display-request-duration: true
+    doc-expansion: "none"

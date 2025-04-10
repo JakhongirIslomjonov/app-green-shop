@@ -2,34 +2,58 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
+    <!-- Parent -->
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.3.4</version>
+        <version>3.3.5</version> <!-- Eng so‘nggi versiyaga yangilandi (taxminiy) -->
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
+
+    <!-- Project Coordinates -->
     <groupId>uz.pdp</groupId>
     <artifactId>app-green-shop</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>app-green-shop</name>
-    <description>app-green-shop</description>
-    <url/>
-    <licenses>
-        <license/>
-    </licenses>
-    <developers>
-        <developer/>
-    </developers>
-    <scm>
-        <connection/>
-        <developerConnection/>
-        <tag/>
-        <url/>
-    </scm>
+    <description>Green Shop Application</description>
+
+    <!-- Properties -->
     <properties>
         <java.version>17</java.version>
+        <springdoc.version>2.3.0</springdoc.version> <!-- Eng so‘nggi versiyaga yangilandi (taxminiy) -->
+        <sentry.version>7.20.0</sentry.version> <!-- Sentry uchun umumiy versiya qo‘shildi -->
     </properties>
+
+    <!-- Dependencies -->
     <dependencies>
+        <!-- H2 Database (development/test uchun) -->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>test</scope> <!-- Agar faqat test uchun kerak bo‘lsa -->
+        </dependency>
+
+        <!-- Sentry Integrations -->
+        <dependency>
+            <groupId>io.sentry</groupId>
+            <artifactId>sentry-jdbc</artifactId>
+            <version>${sentry.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.sentry</groupId>
+            <artifactId>sentry-spring-boot-starter-jakarta</artifactId>
+            <version>${sentry.version}</version>
+        </dependency>
+
+        <!-- Springdoc OpenAPI -->
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+            <version>${springdoc.version}</version>
+        </dependency>
+
+        <!-- Spring Boot Starters -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -43,16 +67,14 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <scope>runtime</scope>
-        </dependency>
+        <!-- Lombok -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
+
+        <!-- Test Dependencies -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -65,6 +87,7 @@
         </dependency>
     </dependencies>
 
+    <!-- Build -->
     <build>
         <plugins>
             <plugin>
